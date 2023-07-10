@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: zch-cms-boot
+
+  profiles:
+    active: dev
