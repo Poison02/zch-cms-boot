@@ -6,7 +6,7 @@ import cdu.zch.system.filter.VerifyCodeFilter;
 import cdu.zch.system.security.JwtTokenManager;
 import cdu.zch.system.security.exception.MyAccessDeniedHandler;
 import cdu.zch.system.security.exception.MyAuthenticationEntryPoint;
-import lombok.RequiredArgsConstructor;
+import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,12 +30,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-@RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final MyAuthenticationEntryPoint authenticationEntryPoint;
-    private final MyAccessDeniedHandler accessDeniedHandler;
-    private final JwtTokenManager jwtTokenManager;
+    @Resource
+    private MyAuthenticationEntryPoint authenticationEntryPoint;
+
+    @Resource
+    private MyAccessDeniedHandler accessDeniedHandler;
+
+    @Resource
+    private JwtTokenManager jwtTokenManager;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -105,5 +109,6 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
 
 }

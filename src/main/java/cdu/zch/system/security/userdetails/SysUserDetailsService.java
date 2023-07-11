@@ -2,6 +2,7 @@ package cdu.zch.system.security.userdetails;
 
 import cdu.zch.system.model.dto.UserAuthInfo;
 import cdu.zch.system.service.SysUserService;
+import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,10 +15,10 @@ import org.springframework.stereotype.Service;
  * @date 2023/7/10
  **/
 @Service
-@RequiredArgsConstructor
 public class SysUserDetailsService implements UserDetailsService {
 
-    private final SysUserService sysUserService;
+    @Resource
+    private SysUserService sysUserService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

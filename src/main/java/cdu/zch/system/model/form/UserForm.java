@@ -10,10 +10,10 @@ import java.util.List;
 
 /**
  * @author Zch
- * @date 2023/7/10
+ * @date 2023/7/11
  **/
-@Data
 @Schema(description = "用户表单对象")
+@Data
 public class UserForm {
 
     @Schema(description="用户ID")

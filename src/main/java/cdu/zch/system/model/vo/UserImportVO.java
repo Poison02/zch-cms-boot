@@ -4,9 +4,8 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
 
 /**
- * 用户导入对象
  * @author Zch
- * @date 2023/7/10
+ * @date 2023/7/11
  **/
 @Data
 public class UserImportVO {
@@ -26,7 +25,7 @@ public class UserImportVO {
     @ExcelProperty(value = "邮箱")
     private String email;
 
-    @ExcelProperty(value = "角色")
+    @ExcelProperty("角色")
     private String roleCodes;
 
 }

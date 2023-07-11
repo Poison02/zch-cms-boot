@@ -8,9 +8,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 用户导入视图对象
  * @author Zch
- * @date 2023/7/10
+ * @date 2023/7/11
  **/
 @Data
 @ColumnWidth(20)
@@ -37,5 +36,6 @@ public class UserExportVO {
     @ExcelProperty(value = "创建时间")
     @DateTimeFormat("yyyy/MM/dd HH:mm:ss")
     private LocalDateTime createTime;
+
 
 }

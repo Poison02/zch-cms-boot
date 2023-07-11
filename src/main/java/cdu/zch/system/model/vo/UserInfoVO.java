@@ -6,12 +6,11 @@ import lombok.Data;
 import java.util.Set;
 
 /**
- * 用户登录视图对象
  * @author Zch
- * @date 2023/7/10
+ * @date 2023/7/11
  **/
+@Schema(description ="当前登录用户视图对象")
 @Data
-@Schema(description = "当前登录用户视图对象")
 public class UserInfoVO {
 
     @Schema(description="用户ID")

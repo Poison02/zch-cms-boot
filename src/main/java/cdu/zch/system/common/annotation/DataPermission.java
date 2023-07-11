@@ -14,7 +14,7 @@ public @interface DataPermission {
 
     String deptAlias() default "";
 
-    String deptColumnName() default "dept_id";
+    String deptIdColumnName() default "dept_id";
 
     String userAlias() default "";
 

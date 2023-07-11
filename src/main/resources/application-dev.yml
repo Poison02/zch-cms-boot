@@ -52,7 +52,7 @@ auth:
 system:
   config:
     # 数据权限开关
-  data-permission-enabled: true
+    data-permission-enabled: true
 
 # springdoc配置： https://springdoc.org/properties.html
 springdoc:

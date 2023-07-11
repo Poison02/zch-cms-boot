@@ -5,9 +5,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 用户表单持久化对象
  * @author Zch
- * @date 2023/7/10
+ * @date 2023/7/11
  **/
 @Data
 public class UserFormBO {

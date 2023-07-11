@@ -1,17 +1,19 @@
 package cdu.zch.system.model.entity;
 
-import cdu.zch.system.common.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import cdu.zch.system.common.base.BaseEntity;
 import lombok.Data;
 
 /**
  * @author Zch
- * @date 2023/7/10
+ * @date 2023/7/11
  **/
 @Data
 public class SysUser extends BaseEntity {
-
+    /**
+     * 
+     */
     @TableId(type = IdType.AUTO)
     private Long id;
 

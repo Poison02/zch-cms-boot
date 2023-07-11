@@ -5,11 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * 验证码响应对象
  * @author Zch
- * @date 2023/7/10
+ * @date 2023/7/11
  **/
-@Schema(description = "验证码响应对象")
+@Schema(description ="验证码响应对象")
 @Builder
 @Data
 public class CaptchaResult {

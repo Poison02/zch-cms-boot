@@ -6,9 +6,8 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 用户持久层对象
  * @author Zch
- * @date 2023/7/10
+ * @date 2023/7/11
  **/
 @Data
 public class UserBO {
@@ -68,5 +67,4 @@ public class UserBO {
      */
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createTime;
-
 }

@@ -6,7 +6,7 @@ import java.util.Set;
 
 /**
  * @author Zch
- * @date 2023/7/10
+ * @date 2023/7/11
  **/
 @Data
 public class UserAuthInfo {

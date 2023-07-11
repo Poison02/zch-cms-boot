@@ -6,10 +6,10 @@ import lombok.Data;
 
 /**
  * @author Zch
- * @date 2023/7/10
+ * @date 2023/7/11
  **/
+@Schema 
 @Data
-@Schema
 public class UserPageQuery extends BasePageQuery {
 
     @Schema(description="关键字(用户名/昵称/手机号)")
