@@ -3,48 +3,51 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.youlai</groupId>
+    <artifactId>youlai-boot</artifactId>
+    <version>2.3.0</version>
+    <description>基于 SpringBoot3 快速构建的权限管理系统</description>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>3.1.0</version> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
-    <groupId>cdu.zch</groupId>
-    <artifactId>zch-cms-boot</artifactId>
-    <version>1.0</version>
-    <name>zch-cms-boot</name>
-    <description>后台权限管理系统</description>
-
     <properties>
-        <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <!--lombok工具类-->
-        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+
+        <hutool.version>5.8.15</hutool.version>
+
+        <mysql.version>8.0.28</mysql.version>
+        <druid.version>1.2.16</druid.version>
+        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
+
+        <knife4j.version>4.0.0</knife4j.version>
+
         <mapstruct.version>1.5.3.Final</mapstruct.version>
-        <!--hutool工具-->
-        <hutool-all.version>5.8.16</hutool-all.version>
-        <!--Alibaba工具类-->
-        <druid-spring-boot-starter.version>1.2.16</druid-spring-boot-starter.version>
-        <easyexcel-version>3.2.1</easyexcel-version>
-        <aliyun-sdk-oss.version>3.16.3</aliyun-sdk-oss.version>
-        <!--数据库相关-->
-        <mybatis-plus-boot-starter.version>3.5.3.1</mybatis-plus-boot-starter.version>
+        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+
+        <xxl-job.version>2.4.0</xxl-job.version>
+
+        <jjwt.version>0.11.5</jjwt.version>
+
+        <easyexcel.version>3.2.1</easyexcel.version>
+
+        <!-- 对象存储 -->
         <minio.version>8.5.2</minio.version>
-        <!--API文档-->
-        <knife4j-openapi3-jakarta-spring-boot-starter.version>4.0.0</knife4j-openapi3-jakarta-spring-boot-starter.version>
-        <!--JWT-->
-        <jjwt-api.version>0.11.5</jjwt-api.version>
-        <jjwt-impl.verison>0.11.5</jjwt-impl.verison>
-        <jjwt-jackson.version>0.11.5</jjwt-jackson.version>
-        <!--xxl-job-->
-        <xxl-job-core.version>2.4.0</xxl-job-core.version>
-        <!--验证码相关-->
+        <okhttp3.version>4.8.1</okhttp3.version>
+
+        <aliyun-sdk-oss.version>3.16.3</aliyun-sdk-oss.version>
+
+        <!-- 验证码 -->
         <easy-captcha.version>1.6.2</easy-captcha.version>
-        <nashorn-core.version>15.4</nashorn-core.version>
-        <!--redisson-->
-        <redisson-spring-boot-starter.version>3.21.0</redisson-spring-boot-starter.version>
+        <nashorn.version>15.4</nashorn.version>
+
+        <!-- redisson 分布式锁 -->
+        <redisson.version>3.21.0</redisson.version>
     </properties>
 
     <dependencies>
@@ -54,132 +57,164 @@
             <!--编译测试环境，不打包在lib-->
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+
         <!-- 允许使用Lombok的Java Bean类中使用MapStruct注解 (Lombok 1.18.20+) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok-mapstruct-binding</artifactId>
             <version>${lombok-mapstruct-binding.version}</version>
+            <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+            <version>${knife4j.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool-all.version}</version>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid-spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus-boot-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-            <version>${knife4j-openapi3-jakarta-spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.xuxueli</groupId>
             <artifactId>xxl-job-core</artifactId>
-            <version>${xxl-job-core.version}</version>
+            <version>${xxl-job.version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
-            <version>${jjwt-api.version}</version>
+            <version>${jjwt.version}</version>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
-            <version>${jjwt-impl.verison}</version>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
-            <version>${jjwt-jackson.version}</version>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>${easyexcel-version}</version>
+            <version>${easyexcel.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.aliyun.oss</groupId>
-            <artifactId>aliyun-sdk-oss</artifactId>
-            <version>${aliyun-sdk-oss.version}</version>
-        </dependency>
+
         <!-- MinIO 对象存储 -->
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>${minio.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>${aliyun-sdk-oss.version}</version>
+        </dependency>
+
         <!-- 验证码 -->
         <dependency>
             <groupId>com.github.whvcse</groupId>
             <artifactId>easy-captcha</artifactId>
             <version>${easy-captcha.version}</version>
         </dependency>
+
         <!-- Java8 之后JavaScript引擎nashorn被移除导致验证码解析报错-->
         <dependency>
             <groupId>org.openjdk.nashorn</groupId>
             <artifactId>nashorn-core</artifactId>
-            <version>${nashorn-core.version}</version>
+            <version>${nashorn.version}</version>
         </dependency>
-        <!--分布式锁-->
+
+        <!-- redisson 分布式锁 -->
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
-            <version>${redisson-spring-boot-starter.version}</version>
+            <version>${redisson.version}</version>
         </dependency>
+
+        <!-- websocket  -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -188,28 +223,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-                <configuration>
-                    <source>17</source>
-                    <target>17</target>
-                    <release>17</release>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct-processor</artifactId>
-                            <version>1.5.3.Final</version>
-                        </path>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok-mapstruct-binding</artifactId>
-                            <version>0.2.0</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
             </plugin>
         </plugins>
     </build>
